@@ -11,14 +11,16 @@ services:
       MYSQL_USER: 'admin_gc_remote'
       MYSQL_PASSWORD: 'Beef.Nyoro@Taipei#101'
       MYSQL_ROOT_PASSWORD: 'r00tP@ss'
-    volumes:
-      - /var/lib/data/mariadb-1:/data/mysql/data
     ports:
       - "33061:3306"
       - '1122:22'
     expose:
       - '3306'
       - '22'
+    command: --log-bin=mysql-bin --server-id=1101 --binlog_format=ROW --read-only=ON --skip-slave-start=ON
+    volumes:
+      - /var/lib/data/mariadb-lab-1:/data/mysql/data
+      - ./config/mariadb-lab-1/my.cnf.d:/etc/mysql/mariadb.conf.d
     networks:
       mysql_net:
         ipv4_address: 172.18.0.101
@@ -33,14 +35,16 @@ services:
       MYSQL_USER: 'admin_gc_remote'
       MYSQL_PASSWORD: 'Beef.Nyoro@Taipei#101'
       MYSQL_ROOT_PASSWORD: 'r00tP@ss'
-    volumes:
-      - /var/lib/data/mariadb-2:/data/mysql/data
     ports:
       - "33062:3306"
       - '1222:22'
     expose:
       - '3306'
       - '22'
+    command: --log-bin=mysql-bin --server-id=1102 --binlog_format=ROW --read-only=ON --skip-slave-start=ON
+    volumes:
+      - /var/lib/data/mariadb-lab-2:/data/mysql/data
+      - ./config/mariadb-lab-2/my.cnf.d:/etc/mysql/mariadb.conf.d
     networks:
       mysql_net:
         ipv4_address: 172.18.0.102
@@ -55,14 +59,16 @@ services:
       MYSQL_USER: 'admin_gc_remote'
       MYSQL_PASSWORD: 'Beef.Nyoro@Taipei#101'
       MYSQL_ROOT_PASSWORD: 'r00tP@ss'
-    volumes:
-      - /var/lib/data/mariadb-3:/data/mysql/data
     ports:
       - "33063:3306"
       - '1322:22'
     expose:
       - '3306'
       - '22'
+    command: --log-bin=mysql-bin --server-id=1101 --binlog_format=ROW --read-only=ON --skip-slave-start=ON
+    volumes:
+      - /var/lib/data/mariadb-lab-3:/data/mysql/data
+      - ./config/mariadb-lab-3/my.cnf.d:/etc/mysql/mariadb.conf.d
     networks:
       mysql_net:
         ipv4_address: 172.18.0.103

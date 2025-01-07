@@ -1,0 +1,6 @@
+[mysqld]
+
+# ssl_ca=/secrets/ca.pem
+# ssl_cert=/secrets/mariadb-server.pem
+# ssl_key=/secrets/mariadb-server.pem
+# ssl_cipher=TLSv1.2,TLSv1.3

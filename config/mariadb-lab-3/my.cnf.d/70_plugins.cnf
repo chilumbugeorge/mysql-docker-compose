@@ -1,0 +1,20 @@
+[mysqld]
+
+# Audit Log set to: ON
+
+# plugin-load                         = server_audit=server_audit.so
+# server_audit                        = FORCE_PLUS_PERMANENT
+# server_audit_logging	     	    = ON
+# server_audit_events                 = QUERY_DML
+# server_audit_query_log_limit        = 7
+# server_audit_file_rotate_size       = 512M
+# server_audit_file_rotations         = 7
+# server_audit_file_path		    = /data/mysql/logs/server_audit.log
+
+# Query Response Time Plugin set to: ON
+# plugin_load_add = query_response_time
+# query_response_time = on
+# query_response_time_audit = on
+# query_response_time_stats = on
+performance_schema              = True
+userstat                        = ON

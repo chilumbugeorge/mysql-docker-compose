@@ -9,7 +9,7 @@ ENV HOME /root
 USER 0
 
 RUN mkdir -p /data/mysql/data
-RUN chmod 755 /data/mysql/data
+RUN chmod 775 /data/mysql/data
 
 # Setting up initial packages
 RUN apt update && apt install -y \

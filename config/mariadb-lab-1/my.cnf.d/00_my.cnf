@@ -1,0 +1,9 @@
+[mysqld]
+
+skip-external-locking
+skip-name-resolve
+skip-slave-start
+gtid-domain-id                 = 1101
+server_id                      = 1101
+read_only                      = 1
+user                           = mysql
