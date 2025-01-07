@@ -1,0 +1,97 @@
+version: '10.11.9'
+services:
+  mariadb-lab-1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mariadb-lab-1
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'company_accounts'
+      MYSQL_USER: 'admin_gc_remote'
+      MYSQL_PASSWORD: 'Beef.Nyoro@Taipei#101'
+      MYSQL_ROOT_PASSWORD: 'r00tP@ss'
+    volumes:
+      - /var/lib/data/mariadb-1:/data/mysql/data
+    ports:
+      - "33061:3306"
+      - '1122:22'
+    expose:
+      - '3306'
+      - '22'
+    networks:
+      mysql_net:
+        ipv4_address: 172.18.0.101
+  mariadb-lab-2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mariadb-lab-2
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'company_accounts'
+      MYSQL_USER: 'admin_gc_remote'
+      MYSQL_PASSWORD: 'Beef.Nyoro@Taipei#101'
+      MYSQL_ROOT_PASSWORD: 'r00tP@ss'
+    volumes:
+      - /var/lib/data/mariadb-2:/data/mysql/data
+    ports:
+      - "33062:3306"
+      - '1222:22'
+    expose:
+      - '3306'
+      - '22'
+    networks:
+      mysql_net:
+        ipv4_address: 172.18.0.102
+  mariadb-lab-3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mariadb-lab-3
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'company_accounts'
+      MYSQL_USER: 'admin_gc_remote'
+      MYSQL_PASSWORD: 'Beef.Nyoro@Taipei#101'
+      MYSQL_ROOT_PASSWORD: 'r00tP@ss'
+    volumes:
+      - /var/lib/data/mariadb-3:/data/mysql/data
+    ports:
+      - "33063:3306"
+      - '1322:22'
+    expose:
+      - '3306'
+      - '22'
+    networks:
+      mysql_net:
+        ipv4_address: 172.18.0.103
+  mysqltools:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mysqltools
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'r00tP@ss'
+    ports:
+      - "33064:3306"
+      - '1422:22'
+    expose:
+      - '3306'
+      - '22'
+    networks:
+      mysql_net:
+        ipv4_address: 172.18.0.104
+
+networks:
+  mysql_net:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.18.0.0/16
+         gateway: 172.18.0.1
+
+volumes:
+  mysql_master_data:
+  mysql_slave_data:
